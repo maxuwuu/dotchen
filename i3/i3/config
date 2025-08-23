@@ -2,7 +2,7 @@
 
 set $mod Mod4
 
-exec --no-startup-id feh --randomize --bg-fill ~/walls/Anime/*
+exec --no-startup-id feh --bg-scale ~/walls/Anime/*
 
 for_window [class=".*"] border pixel 2
 font pango:MesloLGM Nerd Font 12
@@ -107,3 +107,4 @@ mode "resize" {
     bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode "resize"
+
