@@ -1,0 +1,46 @@
+* {
+active-background: #1DA8E5;
+active-foreground: #FAFAFA;
+normal-background: #000000;
+normal-foreground: #FAFAFA;
+urgent-background: #1BAFF0;
+urgent-foreground: #FAFAFA;
+
+alternate-active-background: #2A7494;
+alternate-active-foreground: #FAFAFA;
+alternate-normal-background: #000000;
+alternate-normal-foreground: #FAFAFA;
+alternate-urgent-background: #000000;
+alternate-urgent-foreground: #FAFAFA;
+
+selected-active-background: #1BAFF0;
+selected-active-foreground: #FAFAFA;
+selected-normal-background: #1BAFF0;
+selected-normal-foreground: #FAFAFA;
+selected-urgent-background: #1DA8E5;
+selected-urgent-foreground: #FAFAFA;
+
+background-color: #000000;
+background: rgba(0,0,0,0.7);
+foreground: #FAFAFA;
+border-color: #1DA8E5;
+
+color0: #000000;
+color1: #293033;
+color2: #1B4A62;
+color3: #1F576F;
+color4: #167EAB;
+color5: #1483B4;
+color6: #B4B5B5;
+color7: #EFF0F0;
+color8: #A7A8A8;
+color9: #364044;
+color10: #246283;
+color11: #2A7494;
+color12: #1DA8E5;
+color13: #1BAFF0;
+color14: #F0F1F1;
+color15: #EFF0F0;
+
+
+}
