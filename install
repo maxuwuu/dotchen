@@ -1,0 +1,17 @@
+sudo apt install fonts-roboto 
+sudo apt install fonts-roboto-condensed
+sudo pacman -S ttf-roboto
+sudo dnf install google-roboto-fonts
+
+sudo pacman -S ttf-font-awesome 
+sudo apt install fonts-font-awesome 
+sudo dnf install fontawesome-fonts
+
+
+sudo pacman -S ttf-jetbrains-mono-nerd  
+wget https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+mkdir -p ~/.local/share/fonts
+unzip JetBrainsMono.zip -d ~/.local/share/fonts/
+fc-cache -fv  
+
+ 
