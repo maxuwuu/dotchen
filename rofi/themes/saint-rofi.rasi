@@ -2,6 +2,7 @@
 configuration {
     modi:                    "drun,run,filebrowser";
     show-icons:              true;
+    font:                     "Cantarell 12";
     display-drun:            " apps";
     display-run:             " term";
     display-filebrowser:     " files";
@@ -203,3 +204,4 @@ error-message {
     background-color:        @background;
     text-color:              @foreground;
 }
+
