@@ -1,7 +1,7 @@
 #!/bin/bash
 
 wallDIR="$HOME/Wallpapers"
-rofiThemeDIR="$HOME/.config/WallpaperSelector/wallpaper-selector.rasi"
+rofiThemeDIR="$HOME/.config/rofi/wallpaper.rasi"
 
 mapfile -d '' ALL_PICS < <(
   find -L "$wallDIR" -maxdepth 1 -mindepth 1 \
