@@ -1,6 +1,6 @@
 #!/bin/bash
 
-wallDIR="$HOME/Wallpapers"
+wallDIR="$HOME/walls"
 rofiThemeDIR="$HOME/.config/rofi/wallpaper.rasi"
 
 mapfile -d '' ALL_PICS < <(
