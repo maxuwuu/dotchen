@@ -1,53 +1,80 @@
-import os
-import subprocess
+# qtile 0.33 minimal config - Polybar destekli
+
 from libqtile import layout, hook
-from libqtile.config import Key, Group
+from libqtile.config import Key, Group, Match, Screen
 from libqtile.lazy import lazy
 
-mod = "mod1"
+mod = "mod1"  # Alt tuşu
 terminal = "konsole"
 
+# -----------------------------
+# Keybindings
+# -----------------------------
 keys = [
+    # Terminal aç
     Key([mod], "Return", lazy.spawn(terminal)),
-    Key([mod], "d", lazy.spawn("rofi -show drun")),
-    Key([mod, "shift"], "d", lazy.spawn("thunar")),
-    Key([mod, "shift"], "q", lazy.window.kill()),
-    Key([mod], "f", lazy.window.toggle_fullscreen()),
-    Key([mod, "shift"], "space", lazy.window.toggle_floating()),
-    Key([mod], "j", lazy.layout.left()),
-    Key([mod], "k", lazy.layout.down()),
-    Key([mod], "l", lazy.layout.up()),
-    Key([mod], "semicolon", lazy.layout.right()),
-    Key([mod, "shift"], "j", lazy.layout.shuffle_left()),
-    Key([mod, "shift"], "k", lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_up()),
-    Key([mod, "shift"], "semicolon", lazy.layout.shuffle_right()),
-    Key([mod], "e", lazy.next_layout()),
-    Key([mod, "shift"], "r", lazy.restart()),
-    Key([mod, "shift"], "e", lazy.spawn("~/maria/Launchers/rofi/powermenu/powermenu")),
+    
+    # Çıkış
+    Key([mod, "control"], "q", lazy.shutdown()),
+    
+    # Pencereyi kapat
+    Key([mod], "w", lazy.window.kill()),
+    
+    # Pencereler arasında geçiş
+    Key([mod], "h", lazy.layout.left()),
+    Key([mod], "l", lazy.layout.right()),
+    Key([mod], "j", lazy.layout.down()),
+    Key([mod], "k", lazy.layout.up()),
+
+    # Layout değiştirme
+    Key([mod], "space", lazy.next_layout()),
 ]
 
-groups = [Group(str(i)) for i in range(1, 11)]
-for g in groups:
+# -----------------------------
+# Gruplar
+# -----------------------------
+groups = [Group(i) for i in "123456789"]
+
+for i in groups:
     keys.extend([
-        Key([mod], g.name, lazy.group[g.name].toscreen()),
-        Key([mod, "shift"], g.name, lazy.window.togroup(g.name)),
+        Key([mod], i.name, lazy.group[i.name].toscreen()),
+        Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
     ])
 
+# -----------------------------
+# Layouts
+# -----------------------------
 layouts = [
-    layout.MonadTall(border_focus="#d8a657", border_width=2, margin=5),
+    layout.MonadTall(border_focus="#ff0000", border_width=2, margin=8),
     layout.Max(),
-    layout.Stack(num_stacks=2),
-    layout.Floating(),
 ]
 
-screens = []
+# -----------------------------
+# Window rules
+# -----------------------------
+floating_layout = layout.Floating(
+    float_rules=[
+        *layout.Floating.default_float_rules,
+        Match(title="Confirmation"),
+        Match(title="Qalculate!"),
+    ]
+)
 
+# -----------------------------
+# Screens (Bar yok, Polybar kullanılacak)
+# -----------------------------
+screens = [
+    Screen()
+]
+
+# -----------------------------
+# Autostart
+# -----------------------------
 @hook.subscribe.startup_once
 def autostart():
+    import os
     home = os.path.expanduser("~")
-    subprocess.Popen(["feh", "--bg-scale", f"{home}/walls/Anime/blue.jpg"])
-    subprocess.Popen(["dex", "--autostart", "--environment", "i3"])
-    subprocess.Popen(["xss-lock", "--transfer-sleep-lock", "--", "i3lock", "--nofork"])
-    subprocess.Popen(["nm-applet"])
-    subprocess.Popen(["polybar", "main"])
+    # Wallpaper örneği
+    os.system(f"feh --bg-scale {home}/walls/Anime/blue.jpg &")
+    # Polybar başlat
+    os.system("polybar example &")
